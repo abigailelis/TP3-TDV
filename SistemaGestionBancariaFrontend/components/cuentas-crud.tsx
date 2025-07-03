@@ -35,7 +35,7 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
         const matchesSearch =
             cuenta.entidad_bancaria.toLowerCase().includes(searchTerm.toLowerCase()) ||
             cuenta.numero_cuenta.toString().includes(searchTerm) ||
-            cuenta.id_titular === (isNumeric ? parseInt(searchTerm, 10) : -1)
+            (isNumeric && Number(cuenta.id_titular) === parseInt(searchTerm, 10))
 
         const matchesEntidad =
             filtroEntidad === "todas" ||
@@ -162,6 +162,7 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                         </SelectContent>
                     </Select>
                     <Button
+                        id="btn-limpiar-filtros-cuenta"
                         variant="outline"
                         onClick={() => {
                             setSearchTerm("")
@@ -172,7 +173,7 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                     </Button>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                         <DialogTrigger asChild>
-                            <Button onClick={openNewDialog}>
+                            <Button id="btn-nueva-cuenta" onClick={openNewDialog}>
                                 <Plus className="h-4 w-4 mr-2"/>
                                 Nueva Cuenta
                             </Button>
@@ -221,7 +222,7 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                                         required
                                     />
                                 </div>
-                                <Button type="submit" className="w-full">
+                                <Button id="btn-confirmar-cuenta" type="submit" className="w-full">
                                     {editingCuenta ? "Actualizar" : "Crear"} Cuenta
                                 </Button>
                             </form>
@@ -266,10 +267,10 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                                     <TableCell>{cuenta.id_titular}</TableCell>
                                     <TableCell>
                                         <div className="flex gap-2">
-                                            <Button variant="outline" size="sm" onClick={() => handleEdit(cuenta)}>
+                                            <Button id="btn-editar-cuenta" variant="outline" size="sm" onClick={() => handleEdit(cuenta)}>
                                                 <Edit className="h-4 w-4"/>
                                             </Button>
-                                            <Button variant="destructive" size="sm"
+                                            <Button id="btn-eliminar-cuenta" variant="destructive" size="sm"
                                                     onClick={() => handleDelete(cuenta.id)}>
                                                 <Trash2 className="h-4 w-4"/>
                                             </Button>

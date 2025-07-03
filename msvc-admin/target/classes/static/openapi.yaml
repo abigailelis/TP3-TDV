@@ -1,0 +1,354 @@
+openapi: "3.0.2"
+info:
+  title: Descripción de endpoints - API Sistema de Gestión de Cuentas Bancarias
+  version: "1.0"
+
+servers:
+  - url: http://localhost:8080/api
+
+paths:
+
+  /cuentas:
+    get:
+      summary: Consulta de cuentas con filtros
+      parameters:
+        - in: query
+          name: entidad_bancaria
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de cuentas que cumplen con el filtro
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CuentaResponse'
+
+    post:
+      summary: Alta de una cuenta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CuentaRequest'
+      responses:
+        '201':
+          description: Cuenta creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+  /cuentas/{id}:
+    get:
+      summary: Consultar cuenta por id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Cuenta encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+    put:
+      summary: Actualizar cuenta
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CuentaRequest'
+      responses:
+        '200':
+          description: Cuenta actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+    delete:
+      summary: Baja de cuenta
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Cuenta eliminada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+  /tarifas:
+    get:
+      summary: Listar tarifas con filtros
+      parameters:
+        - in: query
+          name: tipo_tarifa
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tarifas encontradas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TarifaResponse'
+
+    post:
+      summary: Alta de tarifa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TarifaRequest'
+      responses:
+        '201':
+          description: Tarifa creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarifaResponse'
+
+  /tarifas/{id}:
+    get:
+      summary: Consultar tarifa por id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tarifa encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarifaResponse'
+
+    put:
+      summary: Actualizar tarifa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TarifaRequest'
+      responses:
+        '200':
+          description: Tarifa actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarifaResponse'
+
+    delete:
+      summary: Baja de tarifa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tarifa eliminada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarifaResponse'
+
+  /tipo_tarifas:
+    get:
+      summary: Consulta de tipos de tarifa con filtros
+      parameters:
+        - in: query
+          name: tipo_tarifa
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tipos de tarifa encontrados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoTarifaResponse'
+
+    post:
+      summary: Alta de tipo de tarifa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoTarifaRequest'
+      responses:
+        '201':
+          description: Tipo de tarifa creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoTarifaResponse'
+
+  /tipo_tarifas/{id}:
+    get:
+      summary: Consultar tipo de tarifa por id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tipo de tarifa encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoTarifaResponse'
+
+    put:
+      summary: Actualizar tipo de tarifa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoTarifaRequest'
+      responses:
+        '200':
+          description: Tipo de tarifa actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoTarifaResponse'
+
+    delete:
+      summary: Baja de tipo de tarifa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Tipo de tarifa eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoTarifaResponse'
+
+components:
+  schemas:
+
+    CuentaRequest:
+      type: object
+      properties:
+        entidad_bancaria:
+          type: string
+          example: Banco Nación
+        numero_cuenta:
+          type: integer
+          example: 53678893
+        saldo:
+          type: number
+          example: 1000.90
+        id_titular:
+          type: integer
+          minimum: 1
+          example: 183577
+
+    CuentaResponse:
+      allOf:
+        - $ref: '#/components/schemas/CuentaRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+
+    TarifaRequest:
+      type: object
+      properties:
+        tipo_tarifa:
+          type: string
+          example: Premium
+        monto:
+          type: number
+          example: 2000.20
+        fechaVigencia:
+          type: string
+          format: date
+          example: 2025-07-01
+
+    TarifaResponse:
+      allOf:
+        - $ref: '#/components/schemas/TarifaRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 42
+
+    TipoTarifaRequest:
+      type: object
+      properties:
+        tipo_tarifa:
+          type: string
+          example: Premium
+
+    TipoTarifaResponse:
+      allOf:
+        - $ref: '#/components/schemas/TipoTarifaRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 101

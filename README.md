@@ -17,7 +17,6 @@
 
         ├── frontend/ # Interfaz de usuario creada con V0 y Node.js
 
-
 ---
 
 ## 🚀 Requisitos previos
@@ -86,7 +85,7 @@ En la carpeta **/backend/postman/** encontrarás una colección .json.
 3. Ejecutar los endpoints con el backend corriendo en ***localhost:8080***
 
 ### 🧭 Selenium IDE
-En **/frontend/tests-selenium/** podés encontrar los scripts de prueba exportados desde Selenium IDE.
+En **/tests-selenium/** podés encontrar los scripts de prueba exportados desde Selenium IDE.
 
 #### Para ejecutarlos:
 
@@ -99,7 +98,7 @@ En **/frontend/tests-selenium/** podés encontrar los scripts de prueba exportad
 ## 🧱 Tecnologías utilizadas
 
 ### 🔙 Backend
-- Java 17
+- Java 21
 - Spring Boot 3+
 - Spring Data JPA
 - Hibernate Validator
@@ -108,7 +107,7 @@ En **/frontend/tests-selenium/** podés encontrar los scripts de prueba exportad
 
 ### 🌐 Frontend
 - Node.js 18+
-- React 19 (Next.js 15)
+- React 18 (Next.js 15)
 - TailwindCSS + Radix UI
 - React Hook Form + Zod para validación
 - V0 (UI generado por Vercel)

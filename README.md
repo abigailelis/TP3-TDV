@@ -2,10 +2,11 @@
 
 ### Este proyecto contiene una aplicación bancaria de gestión de tarifas y cuentas. 
 
-#### Está dividido en dos partes: 
+#### Está dividido en tres partes: 
 1. **Backend** hecho en Spring Boot 
 2. **Frontend** en Next.js. 
-3. Ambos viven en carpetas separadas bajo un mismo repositorio.
+3. **Pruebas automatizadas** realizadas con Selenium
+4. Todos viven en carpetas separadas bajo un mismo repositorio.
 
 ---
 
@@ -13,10 +14,11 @@
 
     TP3-TDV/ 
 
-        ├── backend/ # API REST con Spring Boot y Docker 
+        ├── msvc-admin/ # API REST con Spring Boot y Docker 
 
-        ├── frontend/ # Interfaz de usuario creada con V0 y Node.js
+        ├── SistemaGestionBancariaFrontend/ # Interfaz de usuario creada con Node.js
 
+        ├── selenium-tests/ # Test automatizados con testNg y Selenium
 ---
 
 ## 🚀 Requisitos previos
@@ -40,10 +42,13 @@
 🔧 Paso a paso
 
 ```bash
-    cd backend
+    cd msvc-admin
     docker build -t sistema-bancario-backend .
     docker run -p 8080:8080 sistema-bancario-backend
 ```
+
+o correr el archivo **docker-compose.yml** que se encuentra en la carpeta raíz del proyecto. 
+
 👉 Esto levanta la API REST en http://localhost:8080.
 
 ## 🔍 Accedé a la documentación interactiva en el siguiente link:
@@ -53,7 +58,7 @@
 ### 3️⃣ Frontend (Next.js)
 🔧 Paso a paso
 ```bash
-    cd ../frontend
+    cd ../SistemaGestionBancariaFrontend
     npm install         # o pnpm install
     npm run dev         # o npm start si así está configurado
 ```
@@ -77,7 +82,7 @@
 ---
 ## 🧪 Visualización de pruebas
 ### 📬 Postman
-En la carpeta **/backend/postman/** se encuentra una colección con el nombre ColeccionPostman.json
+En la carpeta **/msvc-admin/postman/** se encuentra una colección con el nombre ColeccionPostman.json
 
 #### Para usarla:
 
@@ -86,16 +91,15 @@ En la carpeta **/backend/postman/** se encuentra una colección con el nombre Co
 3. Ejecutar los endpoints con el backend corriendo en ***localhost:8080***
 
 ### 🧭 Selenium IDE
-En /selenium-tests/src/test se encuentran los scripts de prueba automatizados exportados desde Selenium IDE, organizados en un proyecto Maven.
+En /selenium-tests/src/test se encuentran los scripts de prueba, organizados en un proyecto Maven.
 
 La estructura relevante del proyecto incluye:
 
-- TestSuite.xml: archivo de suite para ejecutar múltiples pruebas.
 - Main.java: clase utilitaria para lanzar pruebas desde código.
 - Clases de prueba individuales en /tudai/tests/
 
 #### ▶️ Cómo ejecutar los tests
-Se pueden correr los tests de Selenium de desde 
+Se pueden correr los tests de Selenium desde:
 
 - La clase CuentaTest en /tudai/tests/CuentaTest o 
 - La clase Main ubicada en /tudai/Main

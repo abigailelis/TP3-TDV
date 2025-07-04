@@ -7,16 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="selenium-tests (1)" />
         <module name="selenium-tests" />
+        <module name="msvc-admin" />
       </profile>
-      <profile name="Annotation profile for TP3-TDV" enabled="true">
+      <profile name="Annotation profile for msvc-admin" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
-        <module name="msvc-admin" />
+        <module name="msvc-admin (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,8 +27,10 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="msvc-admin" options="-parameters" />
-      <module name="selenium-tests" options="-parameters" />
+      <module name="msvc-admin" options="" />
+      <module name="msvc-admin (1)" options="-parameters" />
+      <module name="selenium-tests" options="" />
+      <module name="selenium-tests (1)" options="-parameters" />
     </option>
   </component>
 </project>

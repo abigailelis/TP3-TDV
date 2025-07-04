@@ -10,7 +10,7 @@ public class CuentaPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final Duration time;
-    private WebElement btnCrearCuenta, btnModificarCuenta, btnEliminarCuenta;
+    private WebElement btnCrearCuenta, btnModificarCuenta, btnEliminarCuenta, inputFiltro;
 
     public CuentaPage(WebDriver driver) {
         this.driver = driver;
@@ -94,5 +94,22 @@ public class CuentaPage {
         } catch (TimeoutException e) {
             return false;
         }
+    }
+
+    public boolean esperarCuentaDesaparecida(String numeroCuenta, int timeoutSegundos) {
+        try {
+            By cuentaLocator = By.xpath("//td[text()='" + numeroCuenta + "']");
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSegundos));
+            return wait.until(ExpectedConditions.invisibilityOfElementLocated(cuentaLocator));
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public void filtarCuenta(String numeroCuenta) {
+        By inputFiltroLocator = By.id("input-filtro");
+        inputFiltro = wait.until(ExpectedConditions.elementToBeClickable(inputFiltroLocator));
+        inputFiltro.click();
+        inputFiltro.sendKeys(numeroCuenta);
     }
 }

@@ -142,6 +142,7 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                         <Search
                             className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4"/>
                         <Input
+                            id="input-filtro"
                             placeholder="Buscar por entidad, número de cuenta o titular..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}

@@ -77,7 +77,8 @@
 ---
 ## 🧪 Visualización de pruebas
 ### 📬 Postman
-En la carpeta **/backend/postman/** encontrarás una colección .json. 
+En la carpeta **/backend/postman/** se encuentra una colección con el nombre ColeccionPostman.json
+
 #### Para usarla:
 
 1. Abrir Postman
@@ -94,37 +95,11 @@ La estructura relevante del proyecto incluye:
 - Clases de prueba individuales en /tudai/tests/
 
 #### ▶️ Cómo ejecutar los tests
-Se pueden correr los tests de Selenium de tres maneras distintas:
+Se pueden correr los tests de Selenium de desde 
 
-1. Desde TestSuite.xml
-   Usando Maven con Surefire o un plugin compatible:
+- La clase CuentaTest en /tudai/tests/CuentaTest o 
+- La clase Main ubicada en /tudai/Main
 
-```bash
-  cd selenium-tests
-  mvn test 
-```
-Esto ejecutará todas las pruebas incluidas en la suite definida por el archivo TestSuite.xml.
-
-2. Desde el Main
-   La clase Main ubicada en tudai.Main permite ejecutar las pruebas directamente desde un main():
-
-```bash
-  cd selenium-tests
-  mvn compile exec:java -Dexec.mainClass="tudai.Main"
-```
-Ideal para debugging o ejecución rápida sin depender del XML.
-
-3. Desde una clase de test específica
-   Se puede correr un test puntual desde Maven:
-
-```bash
-  mvn -Dtest=NombreDelTest test
-```
-**Por ejemplo, para ejecutar solo CrearCuentaTest:**
-
-```bash
-  mvn -Dtest=tudai.tests.CrearCuentaTest test
-```
 --- 
 
 ## 🧱 Tecnologías utilizadas

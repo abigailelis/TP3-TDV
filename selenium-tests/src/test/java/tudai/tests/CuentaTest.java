@@ -11,6 +11,7 @@ import org.testng.annotations.*;
 import org.testng.Assert;
 import tudai.utils.DriverFactory.Navegador;
 
+@Test(singleThreaded = true)
 public class CuentaTest {
 
     static WebDriver driver;
@@ -33,8 +34,9 @@ public class CuentaTest {
     public void testCrearCuentaExito() {
         numeroCuenta = generarRandom();
         idTitular = generarRandom();
+        String saldo = generarRandom();
         cuentaPage.abrirDialogNuevaCuenta();
-        cuentaPage.completarFormulario("Mercado Pago", numeroCuenta, "11000", idTitular);
+        cuentaPage.completarFormulario("Mercado Pago", numeroCuenta, saldo, idTitular);
         cuentaPage.confirmarCreacionCuenta();
 
         Assert.assertTrue(cuentaPage.existeCuenta(numeroCuenta), "La cuenta debería aparecer en la tabla");
@@ -49,13 +51,20 @@ public class CuentaTest {
         Assert.assertTrue(cuentaPage.existeCuenta(numeroCuenta), "La cuenta debería aparecer en la tabla");
     }
 
-    @Test (description = "Borrar cuenta exitosamente", priority = 3)
-    public void testBorrarCuentaExito() {
-        cuentaPage.eliminarCuenta(numeroCuenta);
-
-        Assert.assertFalse(cuentaPage.existeCuenta(numeroCuenta), "La cuenta no deberia aparecer en la tabla");
+    @Test (description = "Busca una cuenta por su numero de cuenta", priority = 3)
+    public void testFiltarCuenta(){
+        cuentaPage.filtarCuenta(numeroCuenta);
+        Assert.assertTrue(cuentaPage.existeCuenta(numeroCuenta), "La cuenta deberia aparecer en la lista");
     }
 
+    @Test(description = "Borrar cuenta exitosamente", priority = 4)
+    public void testBorrarCuentaExito() {
+        Assert.assertTrue(cuentaPage.existeCuenta(numeroCuenta), "La cuenta debe existir para eliminarla");
+        cuentaPage.eliminarCuenta(numeroCuenta);
+
+        boolean eliminada = cuentaPage.esperarCuentaDesaparecida(numeroCuenta, 5);
+        Assert.assertTrue(eliminada, "La cuenta no debería estar visible luego de eliminarla");
+    }
 
     private String generarRandom() {
         return String.valueOf(10000 + new Random().nextInt(90000));

@@ -55,6 +55,9 @@ o correr el archivo **docker-compose.yml** que se encuentra en la carpeta raíz 
 
 [Documentación Swagger](http://localhost:8080/swagger-ui/index.html)
 
+El archivo se encuentra en:
+***/msvc-admin/src/main/resources/static/openapi.yaml***
+
 ### 3️⃣ Frontend (Next.js)
 🔧 Paso a paso
 ```bash

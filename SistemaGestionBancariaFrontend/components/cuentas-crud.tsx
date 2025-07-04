@@ -267,10 +267,10 @@ export function CuentasCRUD({cuentas, setCuentasAction}: CuentasCRUDProps) {
                                     <TableCell>{cuenta.id_titular}</TableCell>
                                     <TableCell>
                                         <div className="flex gap-2">
-                                            <Button id="btn-editar-cuenta" variant="outline" size="sm" onClick={() => handleEdit(cuenta)}>
+                                            <Button id={`btn-editar-cuenta-${cuenta.numero_cuenta}`} variant="outline" size="sm" onClick={() => handleEdit(cuenta)}>
                                                 <Edit className="h-4 w-4"/>
                                             </Button>
-                                            <Button id="btn-eliminar-cuenta" variant="destructive" size="sm"
+                                            <Button id={`btn-eliminar-cuenta-${cuenta.numero_cuenta}`} variant="destructive" size="sm"
                                                     onClick={() => handleDelete(cuenta.id)}>
                                                 <Trash2 className="h-4 w-4"/>
                                             </Button>

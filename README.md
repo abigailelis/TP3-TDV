@@ -85,15 +85,47 @@ En la carpeta **/backend/postman/** encontrarás una colección .json.
 3. Ejecutar los endpoints con el backend corriendo en ***localhost:8080***
 
 ### 🧭 Selenium IDE
-En **/tests-selenium/** podés encontrar los scripts de prueba exportados desde Selenium IDE.
+En /selenium-tests/src/test se encuentran los scripts de prueba automatizados exportados desde Selenium IDE, organizados en un proyecto Maven.
 
-#### Para ejecutarlos:
+La estructura relevante del proyecto incluye:
 
-1. Instalar la extensión Selenium IDE para tu navegador
-2. Abrir el archivo .side en la extensión 
-3. Ejecutar las pruebas sobre tu frontend local (localhost:3000)
+- TestSuite.xml: archivo de suite para ejecutar múltiples pruebas.
+- Main.java: clase utilitaria para lanzar pruebas desde código.
+- Clases de prueba individuales en /tudai/tests/
 
----
+#### ▶️ Cómo ejecutar los tests
+Se pueden correr los tests de Selenium de tres maneras distintas:
+
+1. Desde TestSuite.xml
+   Usando Maven con Surefire o un plugin compatible:
+
+```bash
+  cd selenium-tests
+  mvn test 
+```
+Esto ejecutará todas las pruebas incluidas en la suite definida por el archivo TestSuite.xml.
+
+2. Desde el Main
+   La clase Main ubicada en tudai.Main permite ejecutar las pruebas directamente desde un main():
+
+```bash
+  cd selenium-tests
+  mvn compile exec:java -Dexec.mainClass="tudai.Main"
+```
+Ideal para debugging o ejecución rápida sin depender del XML.
+
+3. Desde una clase de test específica
+   Se puede correr un test puntual desde Maven:
+
+```bash
+  mvn -Dtest=NombreDelTest test
+```
+**Por ejemplo, para ejecutar solo CrearCuentaTest:**
+
+```bash
+  mvn -Dtest=tudai.tests.CrearCuentaTest test
+```
+--- 
 
 ## 🧱 Tecnologías utilizadas
 

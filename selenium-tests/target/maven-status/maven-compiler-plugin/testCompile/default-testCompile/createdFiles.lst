@@ -1,5 +1,5 @@
 tudai\pages\CuentaPage.class
 tudai\Main.class
-tudai\utils\EsperasPersonalizadas.class
+tudai\utils\DriverFactory$Navegador.class
 tudai\utils\DriverFactory.class
 tudai\tests\CrearCuentaTest.class

@@ -10,6 +10,65 @@
 			"name": "Tipo de tarifa",
 			"item": [
 				{
+					"name": "Agregar un nuevo tipo de tarifa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo_tarifa\" : \"Premium\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tipo_tarifas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipo_tarifas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar un tipo de tarifa existente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo_tarifa\" : \"BASICO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tipo_tarifas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tipo_tarifas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Obtener todas los tipos de tarifas",
 					"request": {
 						"method": "GET",
@@ -51,50 +110,12 @@
 					"response": []
 				},
 				{
-					"name": "Agregar un nuevo tipo de tarifa",
+					"name": "Obtener tipo de tarifa con filtro",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"tipo_tarifa\" : \"basica\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/tipo_tarifas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"tipo_tarifas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modificar un tipo de tarifa existente",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"tipo_tarifa\" : \"BASICO\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/tipo_tarifas/1",
+							"raw": "http://localhost:8080/api/tipo_tarifas/tipo/premium",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -103,7 +124,8 @@
 							"path": [
 								"api",
 								"tipo_tarifas",
-								"1"
+								"tipo",
+								"premium"
 							]
 						}
 					},
@@ -135,6 +157,65 @@
 		{
 			"name": "Tarifas",
 			"item": [
+				{
+					"name": "Agregar una nueva tarifa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo_tarifa\": \"basico\",\r\n  \"monto\": 1600.50,\r\n  \"fechaVigencia\": \"2025-07-26\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tarifas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tarifas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar una tarifa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo_tarifa\": \"Basico\",\r\n  \"monto\": 2000.50,\r\n  \"fechaVigencia\": \"2025-08-04\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tarifas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tarifas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Obtener todas las tarifas",
 					"request": {
@@ -184,21 +265,19 @@
 					"response": []
 				},
 				{
-					"name": "Agregar una nueva tarifa",
+					"name": "Obtener una tarifa por tipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"tipo_tarifa\": \"basica\",\r\n  \"monto\": 1600.50,\r\n  \"fechaVigencia\": \"2025-07-26\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\r\n  \"tipo_tarifa\": \"PREMIUM\",\r\n  \"monto\": 1500.50,\r\n  \"fechaVigencia\": \"2025-07-01\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/tarifas",
+							"raw": "http://localhost:8080/api/tarifas/tipo/Basico",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -206,25 +285,22 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"tarifas"
+								"tarifas",
+								"tipo",
+								"Basico"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Modificar una tarifa",
+					"name": "Borrar un tipo de tarifa por id",
 					"request": {
-						"method": "PUT",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"tipo_tarifa\": \"PREMIUM\",\r\n  \"monto\": 1200.50,\r\n  \"fechaVigencia\": \"2025-07-04\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\r\n  \"tipo_tarifa\": \"PREMIUM\",\r\n  \"monto\": 1200.50,\r\n  \"fechaVigencia\": \"2025-07-04\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/tarifas/1",
@@ -241,18 +317,28 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Cuentas",
+			"item": [
 				{
-					"name": "Borrar un tipo de tarifa por id",
+					"name": "Agregar una nueva cuenta",
 					"request": {
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"tipo_tarifa\": \"PREMIUM\",\r\n  \"monto\": 1200.50,\r\n  \"fechaVigencia\": \"2025-07-04\"\r\n}"
+							"raw": "{\r\n    \"entidad_bancaria\" : \"Cuenta DNI\",\r\n    \"numero_cuenta\" : 2961,\r\n    \"saldo\": 5400.00,\r\n    \"id_titular\" : 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/tarifas/4",
+							"raw": "http://localhost:8080/api/cuentas",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -260,18 +346,42 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"tarifas",
-								"4"
+								"cuentas"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Cuentas",
-			"item": [
+				},
+				{
+					"name": "Modificar una cuenta existente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"entidad_bancaria\" : \"Mercado pago\",\r\n    \"numero_cuenta\" : 2961,\r\n    \"saldo\": 1500.00,\r\n    \"id_titular\" : 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cuentas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Obtener todas las cuentas",
 					"request": {
@@ -314,50 +424,12 @@
 					"response": []
 				},
 				{
-					"name": "Agregar una nueva cuenta",
+					"name": "Obtener una cuenta por entidad bancaria",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"entidad_bancaria\" : \"cuenta dni\",\r\n    \"numero_cuenta\" : 2966,\r\n    \"saldo\": 100.00,\r\n    \"id_titular\" : \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/cuentas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"cuentas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modificar una cuenta existente",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"entidad_bancaria\" : \"mercado pago\",\r\n    \"numero_cuenta\" : 2960,\r\n    \"saldo\": 1500.00,\r\n    \"id_titular\" : \"8\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/cuentas/1",
+							"raw": "http://localhost:8080/api/cuentas/entidad_bancaria/mercado%20pago",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -366,7 +438,8 @@
 							"path": [
 								"api",
 								"cuentas",
-								"1"
+								"entidad_bancaria",
+								"mercado%20pago"
 							]
 						}
 					},

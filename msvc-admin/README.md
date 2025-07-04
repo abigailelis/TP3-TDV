@@ -8,7 +8,7 @@ Para ver la documentación con Swagger haga [Click aquí]("http://localhost:8080
 
 ``` bash
 # Clonar el repositorio
-git clone https://github.com/lucasandersen39/TPEspecialGrupoA.git
+git clone https://github.com/abigailelis/TP3-TDV.git
 
 # Navegar al directorio
 cd msvc-admin
